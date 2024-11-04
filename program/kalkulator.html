@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risky Surya - Portfolio</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/aos.css">
+    <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+        /* Center the button vertically and horizontally */
+        .d-flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .modal-content {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            border: none;
+        }
+
+        /* Sticky footer styles */
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 0; /* Padding for the footer */
+            text-align: right;
+        }
+
+        /* Kalkulator styles */
+        .calculator {
+            width: 300px;
+            background-color: #2c2c2c;
+            border-radius: 10px;
+            padding: 20px;
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .calculator .display {
+            width: 100%;
+            height: 50px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-size: 24px;
+            text-align: right;
+            padding: 10px;
+            box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+        }
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap; /* Allow buttons to wrap */
+            justify-content: space-between; /* Distribute buttons evenly */
+        }
+
+        .button {
+            flex: 1 0 21%; /* Take up approximately 21% of the width */
+            height: 60px;
+            font-size: 24px;
+            margin: 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        .button.operator {
+            background-color: #f44336;
+        }
+
+        .button.operator:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container flex-lg-column">
+            <a class="navbar-brand mx-lg-auto mb-lg-4" href="#">
+                <span class="h3 fw-bold d-block d-lg-none">Surya</span>
+                <img src="/assets/images/jas.jpg" class="d-none d-lg-block w-10 rounded-circle" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html#work">Back</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- //NAVBAR -->
+
+    <!-- CONTENT WRAPPER -->
+    <div id="content-wrapper" class="container d-flex-center">
+        <div class="calculator">
+            <input type="text" id="display" class="display" disabled>
+            <div class="buttons">
+                <button class="button" onclick="clearDisplay()">C</button>
+                <button class="button" onclick="appendToDisplay('7')">7</button>
+                <button class="button" onclick="appendToDisplay('8')">8</button>
+                <button class="button" onclick="appendToDisplay('9')">9</button>
+                <button class="button operator" onclick="setOperation('/')">/</button>
+
+                <button class="button" onclick="appendToDisplay('4')">4</button>
+                <button class="button" onclick="appendToDisplay('5')">5</button>
+                <button class="button" onclick="appendToDisplay('6')">6</button>
+                <button class="button operator" onclick="setOperation('*')">*</button>
+
+                <button class="button" onclick="appendToDisplay('1')">1</button>
+                <button class="button" onclick="appendToDisplay('2')">2</button>
+                <button class="button" onclick="appendToDisplay('3')">3</button>
+                <button class="button operator" onclick="setOperation('-')">-</button>
+
+                <button class="button" onclick="appendToDisplay('0')">0</button>
+                <button class="button operator" onclick="calculateResult()">=</button>
+                <button class="button operator" onclick="setOperation('+')">+</button>
+            </div>
+        </div>
+    </div>
+    <!-- //CONTENT WRAPPER -->
+
+    <!-- FOOTER -->
+    <footer class="py-5 px-lg-5">
+        <div class="container">
+            <div class="row gy-4 justify-content-between">
+                <div class="col-auto">
+                    <p class="mb-0"> <a href="#" class="fw-bold">Surya</a></p>
+                </div>
+                <div class="col-auto">
+                    <div class="social-icons">
+                        <a href="https://wa.me/+6287747720008" target="_blank" title="WhatsApp"><i class="lab la-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/sur.2high?igsh=MWRybzFyNDBxMnd2ZQ==" target="_blank" title="Instagram"><i class="lab la-instagram"></i></a>
+                        <a href="https://www.youtube.com/@riskysurya-stikom" target="_blank" title="YouTube"><i class="lab la-youtube"></i></a>
+                        <a href="https://github.com/riskysuryasaputra" target="_blank" title="GitHub"><i class="lab la-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- //FOOTER -->
+
+    <script>
+        let displayValue = '';
+        let currentOperation = null;
+        let firstOperand = null;
+
+        function appendToDisplay(value) {
+            displayValue += value; // Tambahkan nilai ke displayValue
+            updateDisplay(); // Perbarui tampilan
+        }
+
+        function clearDisplay() {
+            displayValue = ''; // Hapus nilai display
+            firstOperand = null; // Reset operand pertama
+            currentOperation = null; // Reset operasi saat ini
+            updateDisplay(); // Perbarui tampilan
+        }
+
+        function updateDisplay() {
+            document.getElementById('display').value = displayValue; // Perbarui elemen input
+        }
+
+        function setOperation(operation) {
+            if (displayValue === '') return; // Tidak lakukan apa-apa jika tidak ada angka yang dimasukkan
+            if (firstOperand === null) {
+                firstOperand = parseFloat(displayValue); // Simpan operand pertama
+            } else if (currentOperation) {
+                firstOperand = calculate(firstOperand, parseFloat(displayValue), currentOperation); // Hitung hasil sebelumnya
+            }
+            currentOperation = operation; // Set operasi saat ini
+            displayValue = ''; // Reset displayValue untuk input berikutnya
+        }
+
+        function calculateResult() {
+            if (currentOperation === null || displayValue === '') return; // Tidak lakukan apa-apa jika tidak ada operasi
+            const secondOperand = parseFloat(displayValue); // Ambil operand kedua
+            const result = calculate(firstOperand, secondOperand, currentOperation); // Hitung hasil
+            displayValue = result.toString(); // Set hasil ke displayValue
+            currentOperation = null; // Reset operasi
+            firstOperand = null; // Reset operand pertama
+            updateDisplay(); // Perbarui tampilan
+        }
+
+        function calculate(first, second, operation) {
+            switch (operation) {
+                case '+':
+                    return first + second;
+                case '-':
+                    return first - second;
+                case '*':
+                    return first * second;
+                case '/':
+                    if (second === 0) {
+                        alert("Cannot divide by zero"); // Penanganan pembagian dengan nol
+                        clearDisplay(); // Hapus display jika terjadi pembagian dengan nol
+                        return 0; // Kembalikan 0
+                    }
+                    return first / second;
+                default:
+                    return second; // Jika operasi tidak valid
+            }
+        }
+    </script>
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>

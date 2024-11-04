@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resistor Paralel - Risky Surya</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/aos.css">
+    <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<style>
+    /* Center the button vertically and horizontally */
+    .d-flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .modal-content {
+        background-color: #2c2c2c;
+        color: #ffffff;
+        border: none;
+    }
+
+    /* Sticky footer styles */
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 15px 0; /* Padding for the footer */
+        text-align: right;
+    }
+
+    .color-option {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ccc;
+        display: inline-block;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+</style>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container flex-lg-column">
+            <a class="navbar-brand mx-lg-auto mb-lg-4" href="#">
+                <span class="h3 fw-bold d-block d-lg-none">Surya</span>
+                <img src="/assets/images/jas.jpg" class="d-none d-lg-block w-10 rounded-circle" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html#work">Back</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- //NAVBAR -->
+
+    <!-- CONTENT WRAPPER -->
+    <div id="content-wrapper" class="container d-flex-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#resistorModal">
+            Hitung Resistor Paralel
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="resistorModal" tabindex="-1" aria-labelledby="resistorModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="resistorModalLabel">Hitung Total Resistor Paralel</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="resistorForm">
+                            <div class="mb-3">
+                                <label>Resistor 1:</label>
+                                <div id="colorPicker1" class="color-picker">
+                                    <div class="color-option" style="background-color: brown;" onclick="selectColor(1, 'brown')"></div>
+                                    <div class="color-option" style="background-color: red;" onclick="selectColor(1, 'red')"></div>
+                                    <div class="color-option" style="background-color: orange;" onclick="selectColor(1, 'orange')"></div>
+                                    <div class="color-option" style="background-color: yellow;" onclick="selectColor(1, 'yellow')"></div>
+                                    <div class="color-option" style="background-color: green;" onclick="selectColor(1, 'green')"></div>
+                                    <div class="color-option" style="background-color: blue;" onclick="selectColor(1, 'blue')"></div>
+                                    <div class="color-option" style="background-color: violet;" onclick="selectColor(1, 'violet')"></div>
+                                    <div class="color-option" style="background-color: gray;" onclick="selectColor(1, 'gray')"></div>
+                                    <div class="color-option" style="background-color: white;" onclick="selectColor(1, 'white')"></div>
+                                </div>
+                                <input type="hidden" id="resistor1" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Resistor 2:</label>
+                                <div id="colorPicker2" class="color-picker">
+                                    <div class="color-option" style="background-color: brown;" onclick="selectColor(2, 'brown')"></div>
+                                    <div class="color-option" style="background-color: red;" onclick="selectColor(2, 'red')"></div>
+                                    <div class="color-option" style="background-color: orange;" onclick="selectColor(2, 'orange')"></div>
+                                    <div class="color-option" style="background-color: yellow;" onclick="selectColor(2, 'yellow')"></div>
+                                    <div class="color-option" style="background-color: green;" onclick="selectColor(2, 'green')"></div>
+                                    <div class="color-option" style="background-color: blue;" onclick="selectColor(2, 'blue')"></div>
+                                    <div class="color-option" style="background-color: violet;" onclick="selectColor(2, 'violet')"></div>
+                                    <div class="color-option" style="background-color: gray;" onclick="selectColor(2, 'gray')"></div>
+                                    <div class="color-option" style="background-color: white;" onclick="selectColor(2, 'white')"></div>
+                                </div>
+                                <input type="hidden" id="resistor2" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Resistor 3:</label>
+                                <div id="colorPicker3" class="color-picker">
+                                    <div class="color-option" style="background-color: brown;" onclick="selectColor(3, 'brown')"></div>
+                                    <div class="color-option" style="background-color: red;" onclick="selectColor(3, 'red')"></div>
+                                    <div class="color-option" style="background-color: orange;" onclick="selectColor(3, 'orange')"></div>
+                                    <div class="color-option" style="background-color: yellow;" onclick="selectColor(3, 'yellow')"></div>
+                                    <div class="color-option" style="background-color: green;" onclick="selectColor(3, 'green')"></div>
+                                    <div class="color-option" style="background-color: blue;" onclick="selectColor(3, 'blue')"></div>
+                                    <div class="color-option" style="background-color: violet;" onclick="selectColor(3, 'violet')"></div>
+                                    <div class="color-option" style="background-color: gray;" onclick="selectColor(3, 'gray')"></div>
+                                    <div class="color-option" style="background-color: white;" onclick="selectColor(3, 'white')"></div>
+                                </div>
+                                <input type="hidden" id="resistor3" required>
+                            </div>
+                            <div class="mb-3">
+                                <label>Resistor 4:</label>
+                                <div id="colorPicker4" class="color-picker">
+                                    <div class="color-option" style="background-color: brown;" onclick="selectColor(4, 'brown')"></div>
+                                    <div class="color-option" style="background-color: red;" onclick="selectColor(4, 'red')"></div>
+                                    <div class="color-option" style="background-color: orange;" onclick="selectColor(4, 'orange')"></div>
+                                    <div class="color-option" style="background-color: yellow;" onclick="selectColor(4, 'yellow')"></div>
+                                    <div class="color-option" style="background-color: green;" onclick="selectColor(4, 'green')"></div>
+                                    <div class="color-option" style="background-color: blue;" onclick="selectColor(4, 'blue')"></div>
+                                    <div class="color-option" style="background-color: violet;" onclick="selectColor(4, 'violet')"></div>
+                                    <div class="color-option" style="background-color: gray;" onclick="selectColor(4, 'gray')"></div>
+                                    <div class="color-option" style="background-color: white;" onclick="selectColor(4, 'white')"></div>
+                                </div>
+                                <input type="hidden" id="resistor4" required>
+                            </div>
+                            <button type="button" class="btn btn-success" onclick="calculateTotal()">Hitung Total</button>
+                        </form>
+                        <div id="result" class="mt-3"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //CONTENT WRAPPER -->
+
+    <!-- FOOTER -->
+    <footer class="py-5 px-lg-5">
+        <div class="container">
+            <div class="row gy-4 justify-content-between">
+                <div class="col-auto">
+                    <p class="mb-0"> <a href="#" class="fw-bold">Surya</a></p>
+                </div>
+                <div class="col-auto">
+                    <div class="social-icons">
+                        <a href="https://wa.me/+6287747720008" target="_blank" title="WhatsApp"><i class="lab la-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/sur.2high?igsh=MWRybzFyNDBxMnd2ZQ==" target="_blank" title="Instagram"><i class="lab la-instagram"></i></a>
+                        <a href="https://www.youtube.com/@riskysurya-stikom" target="_blank" title="YouTube"><i class="lab la-youtube"></i></a>
+                        <a href="https://github.com/riskysuryasaputra" target="_blank" title="GitHub"><i class="lab la-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- //FOOTER -->
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+        // Fungsi untuk memilih warna dan menghitung nilai resistor
+        function selectColor(resistor, color) {
+            const colorValues = {
+                'brown': 1,
+                'red': 2,
+                'orange': 3,
+                'yellow': 4,
+                'green': 5,
+                'blue': 6,
+                'violet': 7,
+                'gray': 8,
+                'white': 9,
+            };
+
+            // Menghitung nilai resistor
+            let value = colorValues[color];
+            if (resistor === 1 || resistor === 2) {
+                value = value * 10; // Untuk digit pertama dan kedua
+            }
+
+            document.getElementById(`resistor${resistor}`).value = value;
+            const colorPicker = document.getElementById(`colorPicker${resistor}`);
+            const options = colorPicker.getElementsByClassName('color-option');
+            for (let i = 0; i < options.length; i++) {
+                options[i].style.border = 'none'; // Reset border
+            }
+            // Highlight selected color
+            event.target.style.border = '2px solid white';
+        }
+
+        function calculateTotal() {
+            const r1 = parseFloat(document.getElementById('resistor1').value);
+            const r2 = parseFloat(document.getElementById('resistor2').value);
+            const r3 = parseFloat(document.getElementById('resistor3').value);
+            const r4 = parseFloat(document.getElementById('resistor4').value);
+
+            // Menghitung nilai total untuk resistor paralel
+            const total = 1 / ((1 / r1) + (1 / r2) + (1 / r3) + (1 / r4));
+            
+            // Menampilkan hasil
+            document.getElementById('result').innerHTML = `<h6>Total Resistor Paralel: ${total.toFixed(2)} Ohm</h6>`;
+        }
+    </script>
+</body>
+
+</html>

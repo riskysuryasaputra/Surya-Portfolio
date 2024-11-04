@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumus Fisika - Risky Surya</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/aos.css">
+    <link rel="stylesheet" href="/assets/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<style>
+    /* Center the button vertically and horizontally */
+    .d-flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .modal-content {
+        background-color: #2c2c2c;
+        color: #ffffff;
+        border: none;
+    }
+
+    /* Sticky footer styles */
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 15px 0; /* Padding for the footer */
+        text-align: right;
+    }
+</style>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container flex-lg-column">
+            <a class="navbar-brand mx-lg-auto mb-lg-4" href="#">
+                <span class="h3 fw-bold d-block d-lg-none">Surya</span>
+                <img src="/assets/images/jas.jpg" class="d-none d-lg-block w-10 rounded-circle" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto flex-lg-column text-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/index.html#work">Back</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- //NAVBAR -->
+
+    <!-- CONTENT WRAPPER -->
+    <div id="content-wrapper" class="container d-flex-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#physicsModal">
+            Rumus Fisika
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="physicsModal" tabindex="-1" aria-labelledby="physicsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="physicsModalLabel">Rumus Fisika</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Pilih Rumus yang Ingin Digunakan:</h6>
+                        <select id="formulaSelect" class="form-select mb-3" onchange="updateFormulaInputs()">
+                            <option value="" disabled selected>Pilih Rumus</option>
+                            <option value="kinematika">Kinematik</option>
+                            <option value="energi">Energi Kinetik </option>
+                            <option value="gravitasi">Gaya Gravitasi </option>
+                        </select>
+
+                        <div id="kinematikaInputs" class="formula-inputs d-none">
+                            <input type="number" id="velocity" class="form-control mb-2" placeholder="Kecepatan (v)">
+                            <input type="number" id="time" class="form-control mb-2" placeholder="Waktu (t)">
+                            <input type="number" id="acceleration" class="form-control mb-2" placeholder="Percepatan (a)">
+                        </div>
+
+                        <div id="energiInputs" class="formula-inputs d-none">
+                            <input type="number" id="mass" class="form-control mb-2" placeholder="Massa (m)">
+                            <input type="number" id="velocityEk" class="form-control mb-2" placeholder="Kecepatan (v)">
+                        </div>
+
+                        <div id="gravitasiInputs" class="formula-inputs d-none">
+                            <input type="number" id="mass1" class="form-control mb-2" placeholder="Massa 1 (m1)">
+                            <input type="number" id="mass2" class="form-control mb-2" placeholder="Massa 2 (m2)">
+                            <input type="number" id="distance" class="form-control mb-2" placeholder="Jarak (r)">
+                        </div>
+
+                        <button type="button" class="btn btn-success" onclick="calculate()">Hitung</button>
+                        <div id="result" class="mt-3"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //CONTENT WRAPPER -->
+
+    <!-- FOOTER -->
+    <footer class="py-5 px-lg-5">
+        <div class="container">
+            <div class="row gy-4 justify-content-between">
+                <div class="col-auto">
+                    <p class="mb-0"> <a href="#" class="fw-bold">Surya</a></p>
+                </div>
+                <div class="col-auto">
+                    <div class="social-icons">
+                        <a href="https://wa.me/+6287747720008" target="_blank" title="WhatsApp"><i class="lab la-whatsapp"></i></a>
+                        <a href="https://www.instagram.com/sur.2high?igsh=MWRybzFyNDBxMnd2ZQ==" target="_blank" title="Instagram"><i class="lab la-instagram"></i></a>
+                        <a href="https://www.youtube.com/@riskysurya-stikom" target="_blank" title="YouTube"><i class="lab la-youtube"></i></a>
+                        <a href="https://github.com/riskysuryasaputra" target="_blank" title="GitHub"><i class="lab la-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- //FOOTER -->
+
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+        function updateFormulaInputs() {
+            const selectedFormula = document.getElementById('formulaSelect').value;
+            document.querySelectorAll('.formula-inputs').forEach((inputGroup) => {
+                inputGroup.classList.add('d-none');
+            });
+
+            if (selectedFormula === "kinematika") {
+                document.getElementById('kinematikaInputs').classList.remove('d-none');
+            } else if (selectedFormula === "energi") {
+                document.getElementById('energiInputs').classList.remove('d-none');
+            } else if (selectedFormula === "gravitasi") {
+                document.getElementById('gravitasiInputs').classList.remove('d-none');
+            }
+        }
+
+        function calculate() {
+            const selectedFormula = document.getElementById('formulaSelect').value;
+            let resultText = '';
+
+            if (selectedFormula === "kinematika") {
+                const v = parseFloat(document.getElementById('velocity').value);
+                const t = parseFloat(document.getElementById('time').value);
+                const a = parseFloat(document.getElementById('acceleration').value);
+                const s = v * t + 0.5 * a * Math.pow(t, 2); // Rumus kinematika
+                resultText = `Jarak (s) = ${s.toFixed(2)} meter`;
+            } else if (selectedFormula === "energi") {
+                const m = parseFloat(document.getElementById('mass').value);
+                const v = parseFloat(document.getElementById('velocityEk').value);
+                const E_k = 0.5 * m * Math.pow(v, 2); // Rumus energi kinetik
+                resultText = `Energi Kinetik (E_k) = ${E_k.toFixed(2)} Joule`;
+            } else if (selectedFormula === "gravitasi") {
+                const m1 = parseFloat(document.getElementById('mass1').value);
+                const m2 = parseFloat(document.getElementById('mass2').value);
+                const r = parseFloat(document.getElementById('distance').value);
+                const G = 6.67430e-11; // Konstanta gravitasi
+                const F = (G * m1 * m2) / Math.pow(r, 2); // Rumus gaya gravitasi
+                resultText = `Gaya Gravitasi (F) = ${F.toFixed(2)} N`;
+            }
+
+            document.getElementById('result').innerHTML = resultText; // Tampilkan hasil
+        }
+    </script>
+</body>
+
+</html>
